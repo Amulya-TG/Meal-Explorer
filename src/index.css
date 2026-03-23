@@ -1,23 +1,37 @@
 body {
   background: white;
-  color: black;
+  color: darkgoldenrod;
   transition: 0.3s;
+  padding: 15px 30px;
+}
+
+body .card {
+  color: black;
+}
+
+body.dark .navbar,a,svg {
+  color: darkgoldenrod;
 }
 
 body.dark {
   background: #121212;
-  color: white;
+  color: goldenrod;
 }
 
-/* Fix cards also */
 body.dark .card {
   background: #1e1e1e;
   color: white;
 }
 
-body.dark .navbar {
-  background: #1e1e1e;
+body.dark .navbar a,
+body.dark .navbar svg {
+  color: goldenrod;
 }
+
+.container{
+  margin-top: 40px;
+}
+
 .category-container,
 .meal-container {
   display: flex;
@@ -122,4 +136,84 @@ button {
   margin-top: 5px;
   cursor: pointer;
 }
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1px solid rgba(255,255,255,0.1); */
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column; 
+  line-height: 1;
+}
+
+.meal {
+  font-size: 38px;
+  font-weight: 800;
+  color: darkgoldenrod;
+}
+
+.explorer {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-top: -2px;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-search input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.nav-end {
+  display: flex;
+  gap: 20px; 
+  align-items: center;
+}
+
+.nav-end a {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+}
+
+
+.nav-end a::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: -5px;
+  background: darkgoldenrod;
+  transition: 0.3s;
+}
+
+.nav-end a:hover::after {
+  width: 100%;
+}
+
+.navbar button{
+  border: none;
+  background: none;
+}
+
+.navbar button svg {
+  width: 20px;
+  height: 20px;
+}
+
 
