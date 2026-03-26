@@ -1,23 +1,25 @@
-🍽️ Meal Recipe Explorer
+### 🍽 Meal Explorer
 
 A React.js web application that allows users to explore different meal categories, view dishes under each category, and read the complete recipe for any selected dish.
 
-This project uses the TheMealDB API to fetch real-time meal data and display it in a clean and interactive interface.
 
-🚀 Features
+### 🚀 Features
 
-✨ View different meal categories
-🍛 Explore dishes under each category
-📖 View detailed recipe instructions for any dish
-🔎 Dynamic data fetching using API
-⚡ Fast and responsive UI built with React
+- ✨ View different meal categories
+- 🍛 Explore dishes under each category
+- 📄 View detailed recipe in popup modal
+- 🔎 Search meals by name or category
+- ⚡ Fast and responsive UI
+- ❤️ Add / remove favorites (stored in localStorage)
+- 🌙 Dark / Light mode toggle
 
 🛠️ Technologies Used
 
-- React JS
-- JavaScript (ES6+)
-- CSS
-- TheMealDB API
+- Frontend: React.js
+- Routing: React Router DOM
+- State Management: React Hooks (useState, useEffect)
+- API: TheMealDB API
+- Styling: CSS
 
 📌 How It Works
 
@@ -37,12 +39,12 @@ cd meal-recipe-explorer
 npm install
 
 - Start the development server:
-npm start
+npm run dev
 
 🌐 API Used
 
 The application fetches data from:
-TheMealDB API
+- 👉 https://www.themealdb.com/
 
 🎯 Learning Outcome
 
@@ -55,9 +57,9 @@ Through this project I practiced:
 
 📂 Future Improvements
 
-- Add search functionality
-- Add favorite recipes feature
-- Improve UI design
-- Add loading animations
+- Search suggestions (auto-complete)
+- Fully responsive mobile navbar
+- Filter by area (country cuisine)
+- User authentication
 
 ⭐ If you like this project, feel free to give it a star!
