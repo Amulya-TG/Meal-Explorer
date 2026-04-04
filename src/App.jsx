@@ -5,6 +5,8 @@ import Meals from "./pages/Meals";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -48,6 +50,8 @@ function App() {
           }
         />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

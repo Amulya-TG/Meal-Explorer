@@ -3,13 +3,14 @@ body {
   color: darkgoldenrod;
   transition: 0.3s;
   padding: 15px 30px;
+  font-family: serif;
 }
 
 body .card {
   color: black;
 }
 
-body.dark .navbar,a,svg {
+body.dark .navbar,a,svg,button {
   color: darkgoldenrod;
 }
 
@@ -24,16 +25,19 @@ body.dark .card {
 }
 
 body.dark .navbar a,
-body.dark .navbar svg {
+body.dark .navbar svg,
+body.dark .navbar button {
   color: goldenrod;
 }
 
-
+/* Homepage */
 .home-page{
   margin-top: 30px;
   text-align: center;
   font-size: 32px;
 }
+
+/* Meal container */
 .container{
   margin-top: 40px;
 }
@@ -47,6 +51,7 @@ body.dark .navbar svg {
   margin-top: 20px;
 }
 
+/* Meal Card */
 .card {
   width: 150px;
   border-radius: 10px;
@@ -65,7 +70,6 @@ body.dark .navbar svg {
   transform: scale(1.08);
   box-shadow: 0px 8px 18px rgba(236, 166, 166, 0.35);
 }
-
 
 .card img {
   width: 120px;
@@ -89,6 +93,7 @@ body.dark .navbar svg {
   color:white;
 }
 
+/* Recipe Popup */
 .popup-overlay{
   position: fixed;
   right: 20px;
@@ -130,18 +135,21 @@ body.dark .navbar svg {
   cursor: pointer;
 }
 
-button {
-  margin-top: 5px;
-  cursor: pointer;
+.btn{
+  border: none;
+  background: none;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* NAVBAR */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-bottom: 1px solid rgba(255,255,255,0.1); */
 }
 
 .nav-logo {
@@ -175,32 +183,40 @@ button {
   border: 1px solid #ccc;
 }
 
-
 .nav-end {
   display: flex;
-  gap: 20px; 
+  gap: 30px; 
   align-items: center;
+  justify-content: space-between;
 }
 
-.nav-end a {
+.nav-end a,.nav-end button{
   text-decoration: none;
   position: relative;
-  font-weight: 500;
+  font-size: 16px; 
+  font-weight: 600;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
 }
 
-
-.nav-end a::after {
+.nav-end a::after,
+.nav-end button::after  {
   content: "";
   position: absolute;
   height: 2px;
   width: 0%;
-  left: 0;
-  bottom: -5px;
+  left: 50%;
+  bottom: -2px;
   background: darkgoldenrod;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
-.nav-end a:hover::after {
+.nav-end a:hover::after,
+.nav-end button:hover::after{
   width: 100%;
 }
 
@@ -210,16 +226,6 @@ button {
 }
 
 .navbar button svg {
-  width: 20px;
-  height: 20px;
-}
-
-.btn{
-  border: none;
-  background: none;
-}
-
-.btn svg {
   width: 20px;
   height: 20px;
 }
