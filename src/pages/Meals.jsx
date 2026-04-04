@@ -4,6 +4,7 @@ import {
   fetchMealsByCategory,
   fetchRecipeDetails,
 } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 import MealCard from "../components/MealCard";
 import RecipePopup from "../components/RecipePopup";
@@ -13,6 +14,7 @@ const Meals = ({ meals, setMeals }) => {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
   if (!category || category === "search") return;
 
@@ -30,9 +32,17 @@ const Meals = ({ meals, setMeals }) => {
 }, [category]);
 
   const handleRecipe = async (id) => {
-    const data = await fetchRecipeDetails(id);
-    setRecipe(data.meals[0]);
-  };
+  const user = localStorage.getItem("user");
+
+  if (!user) {
+    alert("Please login to view recipe");
+    navigate("/login");
+    return;
+  }
+
+  const data = await fetchRecipeDetails(id);
+  setRecipe(data.meals[0]);
+};
 
   return (
     <div className="container">
@@ -53,9 +63,6 @@ const Meals = ({ meals, setMeals }) => {
         )
       }
       
-
-      
-
       {recipe && (
         <RecipePopup
           recipe={recipe}
