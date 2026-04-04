@@ -11,6 +11,7 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     setSearch("");
@@ -24,14 +25,14 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory }) => {
       setSelectedCategory(null);
       const catData = await fetchCategories();
       const categoryNames = catData.categories.map((c) =>
-        c.strCategory.toLowerCase()
+        c.strCategory.toLowerCase(),
       );
 
       let results = [];
 
       if (categoryNames.includes(query)) {
         const data = await fetchMealsByCategory(
-          query.charAt(0).toUpperCase() + query.slice(1)
+          query.charAt(0).toUpperCase() + query.slice(1),
         );
         results = data.meals || [];
       }
@@ -39,7 +40,7 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory }) => {
       const searchData = await searchMeals(query);
       const combined = [...results, ...(searchData.meals || [])];
       const uniqueMeals = Array.from(
-        new Map(combined.map((item) => [item.idMeal, item])).values()
+        new Map(combined.map((item) => [item.idMeal, item])).values(),
       );
       setMeals(uniqueMeals);
       navigate("/meal/search");
@@ -50,12 +51,11 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory }) => {
 
   return (
     <nav className="navbar">
-      <div className="nav-logo">
+      <div className="nav-logo" onClick={() => navigate("/")}>
         <span className="meal">🍽 Meal</span>
         <span className="explorer">Explorer</span>
       </div>
 
-      {/* 🔥 SHOW SEARCH ONLY ON MEAL PAGES */}
       {location.pathname.startsWith("/meal") && (
         <div className="nav-search">
           <input
@@ -88,23 +88,35 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory }) => {
         <Link to="/">Home</Link>
         <Link to="/meal">Meal</Link>
         <Link to="/favorites">Favorites</Link>
-
-      <button onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="white"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-6"
+        {user ? (
+          <button
+          style={{fontFamily:"serif"}}
+            onClick={() => {
+              localStorage.removeItem("user");
+              navigate("/");
+            }}
           >
-            <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-            />
-          </svg>
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+        <button onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
