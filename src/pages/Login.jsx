@@ -19,7 +19,7 @@ const Login = () => {
     }
 
     localStorage.setItem("user", JSON.stringify(user));
-    navigate("/mea");
+    navigate("/");
   };
 
   return (
