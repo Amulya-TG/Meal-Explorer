@@ -5,6 +5,7 @@ const RecipePopup = ({ recipe, onClose }) => {
         <span className="close-btn" onClick={onClose}> ✖</span>
         <h2>{recipe.strMeal}</h2>
         <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+        
         <h3>Instructions</h3>
         <p>{recipe.strInstructions}</p>
       </div>
