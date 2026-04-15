@@ -4,7 +4,6 @@ const CategoryCard = ({ category, onClick }) => {
       <img
         src={category.strCategoryThumb}
         alt={category.strCategory}
-        // loading="lazy"
       />
       <div className="category-overlay">
         <h3>{category.strCategory}</h3>
