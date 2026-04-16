@@ -16,7 +16,7 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory}) => {
 
     setSearching(true);
     try {
-      const data = await searchMeals(query.toLowerCase());
+      const data = await searchMeals(query);
       const results = (data.meals || []).map((meal) => ({
         idMeal: meal.idMeal,
         strMeal: meal.strMeal,
@@ -51,7 +51,7 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory}) => {
           <input
             type="text"
             className="search-input"
-            placeholder="Search meals..."
+            placeholder="Search meals or ingredients..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -102,7 +102,7 @@ const Navbar = ({ darkMode, setDarkMode, setMeals, setSelectedCategory}) => {
           <input
             type="text"
             className="mobile-search-input"
-            placeholder="Search meals..."
+            placeholder="Search meals or ingredients..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
