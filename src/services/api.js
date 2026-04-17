@@ -17,9 +17,7 @@ export const fetchRecipeDetails = async (id) => {
 
 export const searchMeals = async (query) => {
   if (!query || !query.trim()) return { meals: [] };
-
   const trimmed = query.trim();
-
   try {
     // Search by meal name (case-insensitive on API side)
     const nameRes = await fetch(`${BASE_URL}/search.php?s=${encodeURIComponent(trimmed)}`);
